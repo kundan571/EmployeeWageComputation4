@@ -66,6 +66,7 @@ public class EmployeeWageBuilder extends InterfaceEmployeeWage {
         employeeWageBuilder.addCompanies("Amazon", 50, 20, 90);
         employeeWageBuilder.addCompanies("Jio", 25, 25, 95);
         employeeWageBuilder.computeWage();
+        // companies wise total wage
         System.out.println("Total Wage for Amazon " + employeeWageBuilder.getTotalWage("Amazon"));
     }
 }
