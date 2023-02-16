@@ -4,9 +4,20 @@ public class EmployeeWageBuilder {
     public static final int IS_FULL_TIME = 1;
     public static final int IS_PART_TIME = 2;
 
-    public static int computeWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
+    private String company;
+    private int empRatePerHour;
+    private int numOfWorkingDays;
+    private int maxHoursPerMonth;
+    private int totalEmpWage;
 
-    {
+    public EmployeeWageBuilder(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+        this.company = company;
+        this.empRatePerHour = empRatePerHour;
+        this.numOfWorkingDays = numOfWorkingDays;
+        this.maxHoursPerMonth = maxHoursPerMonth;
+    }
+
+    public void computeWage() {
         int empHrs = 0;
         int totalEmpHours = 0;
         int totalWorkingDays = 0;
@@ -25,15 +36,23 @@ public class EmployeeWageBuilder {
             }
 
             totalEmpHours += empHrs;
-            System.out.println("Day: " + totalWorkingDays + " Emp hrs: " + totalEmpHours);
+            System.out.println("Day#: " + totalWorkingDays + " Emp hrs: " + totalEmpHours);
         }
-        int totalEmpWage = totalEmpHours * empRatePerHour;
-        System.out.println("Total wage for company: "+ company + " is " + totalEmpWage);
-        return totalEmpWage;
+        totalEmpWage = totalEmpHours * empRatePerHour;
     }
 
+    @Override
+    public String toString() {
+        return "Total wage for company " + company + " is: " + totalEmpWage;
+    }
+
+
     public static void main(String[] args) {
-        computeWage("Tata Groups", 20, 24, 100);
-        computeWage("Google", 60, 20, 90);
+        EmployeeWageBuilder tataGroup = new EmployeeWageBuilder("Tata Group", 20, 24, 100);
+        EmployeeWageBuilder google = new EmployeeWageBuilder("Google", 60, 20, 90);
+        tataGroup.computeWage();
+        System.out.println(tataGroup);
+        google.computeWage();
+        System.out.println(google);
     }
 }
